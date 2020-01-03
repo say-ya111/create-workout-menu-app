@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_101819) do
+ActiveRecord::Schema.define(version: 2020_01_03_154724) do
+
+  create_table "menus", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type_id"], name: "index_menus_on_type_id"
+    t.index ["user_id", "type_id"], name: "index_menus_on_user_id_and_type_id", unique: true
+    t.index ["user_id"], name: "index_menus_on_user_id"
+  end
 
   create_table "types", force: :cascade do |t|
     t.string "name"
