@@ -11,6 +11,13 @@
   <div class="collapse navbar-collapse" id="navmenu1">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="/about">About</a>
+
+      <% if user_signed_in? %>
+        <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-item nav-link', method: 'delete' %>
+      <% else %>
+        <%= link_to 'ログイン', new_user_session_path, class: 'nav-item nav-link' %>
+      <% end %>
+
     </div>
   </div>
 </nav>

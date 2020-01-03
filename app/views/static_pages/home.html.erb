@@ -1,7 +1,13 @@
 <div class="jumbotron text-center container">
-  <h1 class="home-heading jumbotron-heading text-center">
-    筋トレメニューを自動的に作成します。
-  </h1>
-
-  <%= link_to '種目リスト', '/types_list', class: "btn btn-primary my-2" %>
+  <% if user_signed_in? %>
+    <h1 class="home-heading jumbotron-heading text-center">
+      ようこそ。メニューを作成するには種目リストをご覧ください
+    </h1>
+    <%= link_to '種目リスト', '/types_list', class: "btn btn-primary my-2" %>
+  <% else %>
+    <h1 class="home-heading jumbotron-heading text-center">
+      ユーザー登録して、今日のメニューを自動的に作ろう
+    </h1>
+    <%= link_to 'ユーザー登録', '/sign_up', class: "btn btn-primary my-2" %>
+  <% end %>  
 </div>
