@@ -1,0 +1,19 @@
+<h1 class="user-menu-hedding text-dark border-bottom">あなたのトレーニングメニュー</h1>
+
+<% if @menu_items.count > 0  %>
+
+  <ul class="list-group menu-list mx-auto">
+    <% @menu_items.each do |item| %>
+      <%= content_tag :div, item.name, class: "list-group-item text-center" %>
+    <% end %>
+  </ul>
+
+<% else %>
+
+  <div class="mx-auto text-center" style="width: 500px">
+    <p class="text-info">まだメニューが作成できていません。種目を選んで作成しましょう！</p>
+    <%= link_to '種目リスト', types_list_path, class: "btn btn-primary my-2" %><br>
+  </div>
+
+<% end %>
+

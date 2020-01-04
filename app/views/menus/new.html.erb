@@ -1,0 +1,13 @@
+<h1 class="types-list-header">種目リスト</h1>
+<div class="types-list-wrapper ">
+  <div class="container">
+    <div class="row">
+    <%= form_with url: create_menu_path do |f|  %>
+
+      <%= f.collection_check_boxes :types, Type.all, :id, :name %>
+      <%= f.submit "メニュー作成" %>
+
+    <% end %> 
+    </div>
+  </div>
+</div>

@@ -16,7 +16,7 @@ end
   user = User.create!(email: "valid#{n}@mail.com", password: "foobar", password_confirmation: "foobar")
   
   # userのidで種目を分岐
-  if n + 1 % 2 == 0
+  if user.id % 2 == 0
     # idが偶数のユーザーはベンチプレス、スクワット、デッドリフトでメニューを構成
     types_of_even_user = Type.all[0..2]
     types_of_even_user.each do |t|

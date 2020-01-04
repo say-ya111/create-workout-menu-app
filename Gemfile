@@ -9,12 +9,17 @@ gem 'rails', '~> 5.2.4'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+
+gem 'pry-rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap'
 gem 'jquery-rails'
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

@@ -1,9 +1,10 @@
 <h1 class="types-list-header">種目リスト</h1>
 <div class="types-list-wrapper ">
   <div class="container">
-    <div class="row">
+    <div class="row types-list border-bottom">
       <%= render @types %>
     </div>
+    <%= link_to "メニューを作る", create_menu_path, class: "btn btn-primary" %>
   </div>
 </div>
 

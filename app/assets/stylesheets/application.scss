@@ -4,6 +4,7 @@
 
 .home-heading {
   margin-top: 100px;
+  margin-bottom: 35px;
 }
 
 /* types-list */
@@ -18,7 +19,31 @@
   text-align: center;
 }
 
+.types-list {
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
 .type-item {
   border: solid 1px gray;
   margin: 0 5px 5px 0;
+}
+
+
+/* user show */
+
+.user-menu-hedding {
+  margin: 40px auto;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.menu-list-none {
+  // width: 1000px
+}
+
+/* flash */
+
+.flash {
+  margin-top: 3px;
 }
