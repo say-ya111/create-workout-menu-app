@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: 
+  part: 
+  last_date: 2020-01-05
+
+two:
+  user: 
+  part: 
+  last_date: 2020-01-05

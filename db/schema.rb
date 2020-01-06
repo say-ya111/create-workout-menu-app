@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_154724) do
+ActiveRecord::Schema.define(version: 2020_01_05_165510) do
 
   create_table "menus", force: :cascade do |t|
     t.integer "user_id"
@@ -22,10 +22,21 @@ ActiveRecord::Schema.define(version: 2020_01_03_154724) do
     t.index ["user_id"], name: "index_menus_on_user_id"
   end
 
+  create_table "muscle_parts", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "part"
+    t.date "last_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "recovery_span"
+    t.index ["user_id"], name: "index_muscle_parts_on_user_id"
+  end
+
   create_table "types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "part"
   end
 
   create_table "users", force: :cascade do |t|

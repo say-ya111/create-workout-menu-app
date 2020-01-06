@@ -8,8 +8,10 @@
 
 names = ["ベンチプレス", "スクワット", "デッドリフト", "ラットプルダウン", "ダンベルカール"]
 
-names.each do |name|
-  Type.create(name: name)
+parts = ["大胸筋", "足", "背筋", "広背筋", "上腕二頭筋"]
+
+names.zip(parts) do |name, part|
+  Type.create!(name: name, part: part)
 end
 
 10.times do |n|
@@ -21,12 +23,14 @@ end
     types_of_even_user = Type.all[0..2]
     types_of_even_user.each do |t|
       user.menus.create!(type_id: t.id)
+      user.muscle_parts.create!(part: t.part)
     end
   else
-    # idが偶数のユーザーはラットプルダウン、ダンベルカールでメニューを構成
+    # idが奇数のユーザーはラットプルダウン、ダンベルカールでメニューを構成
     types_of_odd_user = Type.all[3..4]
     types_of_odd_user.each do |t|
       user.menus.create!(type_id: t.id)
+      user.muscle_parts.create!(part: t.part)
     end
   end
 end
