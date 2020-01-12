@@ -1,24 +1,19 @@
-# README
+# 筋トレメニュー作成アプリ
+筋トレメニューを作成します。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# git cloneしたら
+`rails s`で起動。
+今のところUI側で種目を作成することができないので`rails db:seed`で作成することをお勧めします。
 
-Things you may want to cover:
+# 機能
+機能や設計について。ログイン機能はdeviseを導入しています。
 
-* Ruby version
+## メニュー作成
+チェックボックスにチェックを入れた種目をあなたのメニューに取り入れることができます。
+<img width="690" alt="スクリーンショット 2020-01-12 21 30 06" src="https://user-images.githubusercontent.com/52107854/72218847-f4f5ee00-3582-11ea-9173-cc0a245821bc.png">
+<img width="1121" alt="スクリーンショット 2020-01-12 21 33 13" src="https://user-images.githubusercontent.com/52107854/72218863-2969aa00-3583-11ea-89cd-26e089a0dbf5.png">
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 超回復済みメニュー作成
+「超回復」とはトレーニング後に発生する細胞再生のことで、筋肉の部位によって1日〜3日かかります。
+最後に行ったトレーニングから経った日数を考慮して自動的に種目を選んでトレーニングメニューを作成することができます。
+<img width="1121" alt="スクリーンショット 2020-01-12 21 41 11" src="https://user-images.githubusercontent.com/52107854/72218978-45218000-3584-11ea-8de3-19e3363ba4f9.png">
