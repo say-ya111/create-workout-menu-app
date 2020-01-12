@@ -1,0 +1,22 @@
+<h1 class="user-menu-hedding text-dark border-bottom">あなたのトレーニングメニュー（超回復済み）</h1>
+
+<% if @menu_items.count > 0  %>
+
+  <div class="menu-wrapper text-center">
+    <ul class="list-group menu-list mx-auto">
+      <% @menu_items.each do |item| %>
+        <%= content_tag :div, item.name, class: "list-group-item text-center" %>
+      <% end %>
+    </ul>
+
+    <%= link_to 'トレーニングを完了したら押してください', menu_of_recovered_parts_path, :method => :patch, class: "btn btn-primary my-2" %>
+  </div>
+
+<% else %>
+
+  <div class="mx-auto text-center" style="width: 500px">
+    <p class="text-info">超回復している筋肉はありません。休息も大事です。</p>
+  </div>
+
+<% end %>
+

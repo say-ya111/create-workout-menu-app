@@ -11,16 +11,18 @@ class User < ApplicationRecord
   def menu_of_recovered_parts
     menu = []
     self.menu_items.to_a.each do |item|
-      if self.recovered_parts.include?(item.part)
-        menu = item
-      else
-        next
+      if self.recovered_parts_names.include?(item.part)
+        menu << item
       end
     end
     return menu
   end
 
-  def recovered_parts
+  def recovered_parts_names
     self.muscle_parts.to_a.delete_if{|mp| !mp.is_recovered(Date.today)}.pluck(:part)
+  end
+
+  def recovered_parts
+    self.muscle_parts.to_a.delete_if{|mp| !mp.is_recovered(Date.today)}
   end
 end

@@ -1,5 +1,6 @@
 class MusclePart < ApplicationRecord
-  before_save :set_last_date, :set_recovery_span
+  before_save :set_recovery_span
+  before_create :set_last_date
   belongs_to :user
 
   def is_recovered(current_time)

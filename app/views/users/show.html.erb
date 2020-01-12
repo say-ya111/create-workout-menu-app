@@ -2,11 +2,15 @@
 
 <% if @menu_items.count > 0  %>
 
-  <ul class="list-group menu-list mx-auto">
-    <% @menu_items.each do |item| %>
-      <%= content_tag :div, item.name, class: "list-group-item text-center" %>
-    <% end %>
-  </ul>
+  <div class="menu-wrapper text-center">
+    <ul class="list-group menu-list mx-auto border-bottom">
+      <% @menu_items.each do |item| %>
+        <%= content_tag :div, item.name, class: "list-group-item text-center" %>
+      <% end %>
+    </ul>
+
+    <%= link_to '超回復済みメニューを見る', menu_of_recovered_parts_path, class: "btn btn-primary my-2" %>
+  </div>
 
 <% else %>
 
