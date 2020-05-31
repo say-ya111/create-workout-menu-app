@@ -8,10 +8,11 @@
 
 names = ["ベンチプレス", "スクワット", "デッドリフト", "ラットプルダウン", "ダンベルカール"]
 
-parts = ["大胸筋", "足", "背筋", "広背筋", "上腕二頭筋"]
+parts = ["大胸筋", "脚", "背筋", "広背筋", "上腕二頭筋"]
 
 names.zip(parts) do |name, part|
-  Type.create!(name: name, part: part)
+  Part.create!(name: part)
+  Type.create!(name: name, part_id: Part.find_by(name: part).id)
 end
 
 10.times do |n|

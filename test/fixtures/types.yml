@@ -7,21 +7,18 @@
 benchpress: {
   id: 1,
   name: "ベンチプレス",
-  part: "大胸筋"
+  part: chest
 }
 
 squat: {
   id: 2,
   name: "スクワット",
-  part: "足"
+  part: leg
 }
 
 deadlift: {
   id: 3,
   name: "デッドリフト",
-  part: "背筋"
+  part: back_muscles
 }
-# column: value
-#
-two: {}
-# column: value
+

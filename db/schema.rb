@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_05_165510) do
+ActiveRecord::Schema.define(version: 2020_05_31_172451) do
 
   create_table "menus", force: :cascade do |t|
     t.integer "user_id"
@@ -24,19 +24,31 @@ ActiveRecord::Schema.define(version: 2020_01_05_165510) do
 
   create_table "muscle_parts", force: :cascade do |t|
     t.integer "user_id"
-    t.string "part"
     t.date "last_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "recovery_span"
+    t.integer "part_id"
+    t.index ["part_id"], name: "index_muscle_parts_on_part_id"
     t.index ["user_id"], name: "index_muscle_parts_on_user_id"
+  end
+
+  create_table "parts", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "muscle_part_id"
+    t.integer "type_id"
+    t.index ["muscle_part_id"], name: "index_parts_on_muscle_part_id"
+    t.index ["type_id"], name: "index_parts_on_type_id"
   end
 
   create_table "types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "part"
+    t.integer "part_id"
+    t.index ["part_id"], name: "index_types_on_part_id"
   end
 
   create_table "users", force: :cascade do |t|
