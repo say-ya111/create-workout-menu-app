@@ -1,0 +1,5 @@
+class RemoveStringFromPart < ActiveRecord::Migration[5.2]
+  def change
+    remove_column :parts, :string, :string
+  end
+end
