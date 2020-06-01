@@ -10,7 +10,7 @@ class PartsRecoveringTest < ActionDispatch::IntegrationTest
   test "ユーザーの部位が回復し、超回復済みメニューが作られる" do
     # 筋トレ種目をメニューに追加
     post create_menu_path, params: {
-        types: ["1", "2", "3"]
+        types: {"1" => "1", "2" => "2", "3" => "3"}
       }
     # ユーザーの部位が種目の数だけ作られる
     assert_equal @user.muscle_parts.count, 3

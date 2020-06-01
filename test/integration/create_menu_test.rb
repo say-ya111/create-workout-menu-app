@@ -12,7 +12,7 @@ class CreateMenuTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_difference ['@user.menus.count', '@user.muscle_parts.count'], 3 do
       post create_menu_path, params: {
-        types: ["1", "2", "3"]
+        types: {"1" => "1", "2" => "2", "3" => "3", "4" => ""}
       }
     end
     assert_redirected_to user_path(@user)
