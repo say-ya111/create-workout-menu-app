@@ -4,21 +4,49 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-benchpress: {
+benchpress: 
   id: 1,
-  name: "ベンチプレス",
+  name: ベンチプレス,
   part: chest
-}
 
-squat: {
+
+squat: 
   id: 2,
-  name: "スクワット",
+  name: スクワット,
   part: leg
-}
 
-deadlift: {
+
+deadlift: 
   id: 3,
-  name: "デッドリフト",
+  name: デッドリフト,
   part: back_muscles
-}
 
+
+dumbbellcurl:
+  id: 4,
+  name: ダンベルカール,
+  part: biceps
+
+
+frenchpress:
+  id: 5,
+  name: フレンチプレス,
+  part: triceps
+
+
+abs:
+  id: 6,
+  name: 腹筋,
+  part: abs
+
+
+machinechestpress:
+  id: 7,
+  name: マシンチェストプレス,
+  part: chest
+
+
+chinning:
+  id: 8,
+  name: 懸垂,
+  part: back_muscles

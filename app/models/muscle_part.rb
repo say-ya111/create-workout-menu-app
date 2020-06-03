@@ -4,6 +4,8 @@ class MusclePart < ApplicationRecord
   belongs_to :user
   belongs_to :part
 
+  validates :part_id, uniqueness: { scope: :user_id }
+
   def is_recovered(current_time)
     days_since_last_date = current_time - self.last_date
     if days_since_last_date >= self.recovery_span

@@ -1,5 +1,7 @@
 class Type < ApplicationRecord
-  validates :name, presence: true
   has_many :menus
   belongs_to :part
+
+  validates :name, presence: true
+  validates :part_id, presence: true
 end

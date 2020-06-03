@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_172451) do
+ActiveRecord::Schema.define(version: 2020_06_03_091244) do
 
   create_table "menus", force: :cascade do |t|
     t.integer "user_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_05_31_172451) do
     t.integer "recovery_span"
     t.integer "part_id"
     t.index ["part_id"], name: "index_muscle_parts_on_part_id"
+    t.index ["user_id", "part_id"], name: "index_muscle_parts_on_user_id_and_part_id", unique: true
     t.index ["user_id"], name: "index_muscle_parts_on_user_id"
   end
 

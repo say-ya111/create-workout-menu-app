@@ -21,17 +21,9 @@ end
   # userのidで種目を分岐
   if user.id % 2 == 0
     # idが偶数のユーザーはベンチプレス、スクワット、デッドリフトでメニューを構成
-    types_of_even_user = Type.all[0..2]
-    types_of_even_user.each do |t|
-      user.menus.create!(type_id: t.id)
-      user.muscle_parts.create!(part: t.part)
-    end
+    user.add_type_to_menu([1, 2, 3])
   else
     # idが奇数のユーザーはラットプルダウン、ダンベルカールでメニューを構成
-    types_of_odd_user = Type.all[3..4]
-    types_of_odd_user.each do |t|
-      user.menus.create!(type_id: t.id)
-      user.muscle_parts.create!(part: t.part)
-    end
+    user.add_type_to_menu([4, 5])
   end
 end
