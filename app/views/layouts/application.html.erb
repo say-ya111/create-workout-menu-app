@@ -13,6 +13,11 @@
   <div class="application-wrapper">
     <%= render "layouts/header" %>
     <%= render "layouts/flash" %>
+
+    <% if content_for?(:page_header) %>
+      <h1 class="page-header text-dark border-bottom"><%= yield(:page_header)%></h1>
+    <% end %>
+
     <%= yield %>
   </div>
   </body>

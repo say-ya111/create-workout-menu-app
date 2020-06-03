@@ -1,15 +1,18 @@
-<h1 class="user-menu-hedding text-dark border-bottom">あなたのトレーニングメニュー（超回復済み）</h1>
+<%= content_for :page_header do %>あなたの超回復済みメニュー<% end %>
+
 
 <% if @menu_items.count > 0  %>
 
   <div class="menu-wrapper text-center">
     <ul class="list-group menu-list mx-auto">
       <% @menu_items.each do |item| %>
-        <%= content_tag :div, item.name, class: "list-group-item text-center" %>
+        <%= content_tag :div, item.name, class: "list-group-item text-center menu-list-item" %>
       <% end %>
     </ul>
 
+    <p>
     <%= link_to 'トレーニングを完了したら押してください', menu_of_recovered_parts_path, :method => :patch, class: "btn btn-primary my-2" %>
+    </p>
   </div>
 
 <% else %>
