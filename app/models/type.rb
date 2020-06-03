@@ -3,5 +3,6 @@ class Type < ApplicationRecord
   belongs_to :part
 
   validates :name, presence: true
+  validates :name, length: { maximum: 30 }
   validates :part_id, presence: true
 end
