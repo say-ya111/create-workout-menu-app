@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   post '/create_menu' => "menus#create"
 
   resources :users, only: [:show]
+  resources :types, only: [:new, :create]
 end

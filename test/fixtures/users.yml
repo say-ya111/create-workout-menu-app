@@ -8,7 +8,11 @@ valid_user: {
   email: "valid123@mail.com",
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 }
+
 # column: value
 #
-two: {}
+another_valid_user:  {
+  email: "valid456@mail.com",
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+}
 # column: value

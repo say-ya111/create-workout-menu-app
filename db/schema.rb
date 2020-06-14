@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_091244) do
+ActiveRecord::Schema.define(version: 2020_06_14_091621) do
 
   create_table "menus", force: :cascade do |t|
     t.integer "user_id"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 2020_06_03_091244) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "part_id"
+    t.integer "user_id", default: 0
+    t.index ["id"], name: "index_types_on_id_and_user_id", unique: true
     t.index ["part_id"], name: "index_types_on_part_id"
   end
 
