@@ -1,6 +1,10 @@
 class TypesController < ApplicationController
   def index
-    @types = Type.where(user_id: 0).or(Type.where(user_id: current_user.id))
+    if user_signed_in?
+      @types = Type.where(user_id: 0).or(Type.where(user_id: current_user.id))
+    else
+      @types = Type.where(user_id: 0)
+    end
   end
 
   def new
