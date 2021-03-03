@@ -16,6 +16,7 @@ gem 'pry-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'font-awesome-rails'
 
 gem 'devise'
 gem 'devise-i18n'
