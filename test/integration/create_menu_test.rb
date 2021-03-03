@@ -8,10 +8,10 @@ class CreateMenuTest < ActionDispatch::IntegrationTest
   end
 
   test "正しく種目をメニューに追加することができる" do
-    get create_menu_path
+    get new_menu_path
     assert_response :success
     assert_difference ['@user.menus.count', '@user.muscle_parts.count'], 3 do
-      post create_menu_path, params: {
+      post menus_path, params: {
         types: {"1" => "1", "2" => "2", "3" => "3", "4" => ""}
       }
     end
@@ -20,12 +20,12 @@ class CreateMenuTest < ActionDispatch::IntegrationTest
 
   test "ユーザーと種目の組み合わせは一意である" do
     # ユーザーのメニューの種目の数は３個
-    post create_menu_path, params: {
+    post menus_path, params: {
       types: ["1", "2", "3"]
     }
     # 新たに３つ追加しようと思っても反映されない
     assert_no_difference ['@user.menus.count', '@user.muscle_parts.count'] do
-      post create_menu_path, params: {
+      post menus_path, params: {
         types: ["1", "2", "3"]
       }
     end

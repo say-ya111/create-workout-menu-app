@@ -17,6 +17,7 @@ class TypesController < ApplicationController
     user.menu_items.create(name: params[:type], part_id: params[:part], user_id: user.id)
     mp = user.muscle_parts.find_or_initialize_by(part_id: params[:part])
     mp.save
+    flash.now[:info] = "種目の作成に不具合が生じました。正しく入力をしてください。"
     redirect_to types_list_url
   end
 end

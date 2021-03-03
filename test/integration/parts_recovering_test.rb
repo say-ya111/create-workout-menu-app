@@ -9,7 +9,7 @@ class PartsRecoveringTest < ActionDispatch::IntegrationTest
 
   test "ユーザーの部位が回復し、超回復済みメニューが作られる" do
     # 筋トレ種目をメニューに追加
-    post create_menu_path, params: {
+    post menus_path, params: {
         types: {"1" => "1", "2" => "2", "3" => "3"}
       }
     # ユーザーの部位が種目の数だけ作られる
@@ -25,6 +25,6 @@ class PartsRecoveringTest < ActionDispatch::IntegrationTest
     # 全ての部位が回復するまで時間を進める
     travel @user.muscle_parts.pluck(:recovery_span).max.days
     assert_equal @user.reload.recovered_parts.count, 3
-    assert_equal @user.menu_of_recovered_parts.count, 3
+    assert_equal @user.reload.menu_of_recovered_parts.count, 3
   end
 end
