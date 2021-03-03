@@ -40,4 +40,12 @@ class User < ApplicationRecord
   def recovered_parts
     self.muscle_parts.to_a.delete_if{|mp| !mp.is_recovered(Date.today)}
   end
+
+  def types_of_upper_parts
+    self.menu_items.where.not(part_id: 2)
+  end
+
+  def types_of_lower_parts
+    self.menu_items.where(part_id: 2)
+  end
 end

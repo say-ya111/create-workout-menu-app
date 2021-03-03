@@ -1,0 +1,23 @@
+<%= provide(:title, "部位別メニュー作成") %>
+<%= content_for :page_header, "ターゲット部位と種目を選択してください" %>
+
+<%= form_with(url: new_indiv_part_menu_path, method: :get, remote: true) do %>
+  <%= select_tag :select_part, options_for_select({"上半身" => "upper", "下半身" => "lower"}), class: "indiv-part-select" %>
+<% end %>
+
+<div class="indiv-part-content"></div>
+
+<script>
+  $(function (){
+    $('#select_part').change(function () {
+      $.ajax({
+      url: '<%= new_indiv_part_menu_path %>',
+      type: "GET",
+      data: {
+        part: $('[name=select_part]').val(),
+        section: "upper-or-lower"
+      },
+    })
+    })
+  })
+</script>

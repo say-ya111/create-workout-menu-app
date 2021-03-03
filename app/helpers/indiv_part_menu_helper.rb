@@ -1,0 +1,2 @@
+module IndivPartMenuHelper
+end
