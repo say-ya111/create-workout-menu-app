@@ -1,5 +1,13 @@
 ja:
   activerecord:
+    errors:
+      models:
+        user:
+        attributes:
+          email:
+            blank: "メールアドレスが記入されていません"
+          password:
+            blank: "パスワードが記入されていません"
     attributes:
       user:
         current_password: "現在のパスワード"
@@ -65,3 +73,4 @@ ja:
     unlocks:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
+

@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "が記入されていません"
+            password:
+              blank: "が記入されていません"
