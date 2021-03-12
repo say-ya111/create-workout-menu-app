@@ -1,3 +1,4 @@
+# ユーザーの各部位の状態を表すモデル
 class MusclePart < ApplicationRecord
   before_save :set_recovery_span
   before_create :set_last_date

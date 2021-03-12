@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :muscle_parts, dependent: :destroy
 
+  enum upper_lower_rotation: {"上半身": 0, "下半身": 1}
+
   # そのユーザーの超回復済みメニュー
   def menu_of_recovered_parts
     menu = []
@@ -32,7 +34,7 @@ class User < ApplicationRecord
     end
   end
 
-  # 回復済みの部位の名前を返す
+  # 回復済みの部位のidを返す
   def recovered_parts_ids
     part_ids = self.muscle_parts.to_a.delete_if{|mp| !mp.is_recovered(Date.today)}.pluck(:part_id)
   end
@@ -47,5 +49,25 @@ class User < ApplicationRecord
 
   def types_of_lower_parts
     self.menu_items.where(part_id: 2)
+  end
+
+  def split_menu
+    case self.times_a_week
+    when 2
+      self.upper_lower_split_menu
+    end
+  end
+
+  # 上半身と下半身に分けたメニュー
+  def upper_lower_split_menu
+    if self.upper_lower_rotation == 0
+      self.upper_menu
+    else
+      self.lower_menu
+    end
+  end
+
+  def upper_menu
+    self.muscle_parts.preload(:part)
   end
 end

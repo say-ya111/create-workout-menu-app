@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/create_menu' => "menus#new"
   post '/create_menu' => "menus#create"
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :update]
   resources :types, only: [:new, :create]
   resources :indiv_part_menu
 end
