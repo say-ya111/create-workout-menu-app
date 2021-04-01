@@ -9,3 +9,11 @@ ja:
         created_at: 登録日時
         updated_at: 更新日時
         time_a_week: 週毎のトレーニング回数
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: パスワードが空です。
+      messages:
+        record_invalid: 適切な値を入力してください

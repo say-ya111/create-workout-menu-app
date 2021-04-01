@@ -4,6 +4,8 @@ class IndivPartMenuController < ApplicationController
   def new
     user = current_user
     times_a_week = user.times_a_week
+    # @indiv_menu = user.indiv_menu
+    
     
     # @user_types = user.menu_items
     # # 上半身と下半身に分けるユーザー用

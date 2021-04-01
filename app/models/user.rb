@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :menus, dependent: :destroy
   has_many :menu_items, through: :menus, source: :type
-
   has_many :muscle_parts, dependent: :destroy
+
+  validates :times_a_week, numericality: {only_integer: true, less_than_or_equal_to: 7, greater_than_or_equal_to: 2}
 
   enum upper_lower_rotation: {"上半身": 0, "下半身": 1}
 
@@ -39,8 +40,17 @@ class User < ApplicationRecord
     part_ids = self.muscle_parts.to_a.delete_if{|mp| !mp.is_recovered(Date.today)}.pluck(:part_id)
   end
 
+  # 回復している部位
   def recovered_parts
     self.muscle_parts.to_a.delete_if{|mp| !mp.is_recovered(Date.today)}
+  end
+
+  # 部位別メニュー。週何回トレーニングするかによって分ける
+  def indiv_menu
+    case self.times_a_week
+    when 2
+      self.upper_lower_split_menu
+    end
   end
 
   def types_of_upper_parts
@@ -60,7 +70,7 @@ class User < ApplicationRecord
 
   # 上半身と下半身に分けたメニュー
   def upper_lower_split_menu
-    if self.upper_lower_rotation == 0
+    if self.training_rotation == 0
       self.upper_menu
     else
       self.lower_menu

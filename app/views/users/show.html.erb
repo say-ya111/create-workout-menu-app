@@ -30,11 +30,12 @@
     </div>
     <div class="col">
       <h1 class="page-header text-dark border-bottom"><%= yield(:page_header2) %></h1>
-      <%= form_with(model: @user, url: user_path(current_user.id)) do |f| %>
+      <%= form_with(model: @user, url: user_path(current_user.id), remote: true) do |f| %>
         <%= f.label User.human_attribute_name(:times_a_week) %>
-        <%= f.number_field :times_a_week, in: 0..7 %>
+        <%= f.number_field :times_a_week, in: 2..7 %>
         <p class="border-top" style="margin-top: 20px; padding-top: 20px">
-          <%= f.submit "トレーニング回数を設定する", class: "btn btn-primary btn-outline" %>
+          <%= f.submit "トレーニング回数を設定する", data: { disable_with: "更新中..." }, class: "btn btn-primary btn-outline" %>
+          <span id="js-update-success" class="text-info" style="margin-left:5px"></span>
         </p>
       <% end %>
     </div>

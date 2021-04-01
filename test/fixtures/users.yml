@@ -6,7 +6,9 @@
 #
 valid_user: {
   email: "valid123@mail.com",
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>,
+  times_a_week: 7,
+  training_rotation: 3
 }
 
 # column: value
