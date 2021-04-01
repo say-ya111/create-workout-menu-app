@@ -9,7 +9,6 @@ class User < ApplicationRecord
 
   validates :times_a_week, numericality: {only_integer: true, less_than_or_equal_to: 7, greater_than_or_equal_to: 2}
 
-  enum upper_lower_rotation: {"上半身": 0, "下半身": 1}
 
   # そのユーザーの超回復済みメニュー
   def menu_of_recovered_parts
@@ -46,21 +45,6 @@ class User < ApplicationRecord
   end
 
   # 部位別メニュー。週何回トレーニングするかによって分ける
-  def indiv_menu
-    case self.times_a_week
-    when 2
-      self.upper_lower_split_menu
-    end
-  end
-
-  def types_of_upper_parts
-    self.menu_items.where.not(part_id: 2)
-  end
-
-  def types_of_lower_parts
-    self.menu_items.where(part_id: 2)
-  end
-
   def split_menu
     case self.times_a_week
     when 2
@@ -68,12 +52,22 @@ class User < ApplicationRecord
     end
   end
 
+  # 上半身部位の種目
+  def types_of_upper_parts
+    self.menu_items.eager_load(:part).where(parts: {name: Part.upper_parts})
+  end
+
+  # 下半身部位の種目
+  def types_of_lower_parts
+    self.menu_items.eager_load(:part).where(parts: {name: Part.lower_parts})
+  end
+
   # 上半身と下半身に分けたメニュー
   def upper_lower_split_menu
     if self.training_rotation == 0
-      self.upper_menu
+      self.types_of_upper_parts
     else
-      self.lower_menu
+      self.types_of_lower_parts
     end
   end
 

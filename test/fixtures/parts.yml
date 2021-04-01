@@ -17,6 +17,21 @@ leg:
 back_muscles:
   name: 背筋
 
+hip:
+  name: hip
+
+calf:
+  name: カーフ
+
+quadriceps:
+  name: 大腿四頭筋
+
+hamstring:
+  name: ハムストリング
+
+lats:
+  name: 広背筋
+
 part_id_one:
   id: 1
   name: IDone

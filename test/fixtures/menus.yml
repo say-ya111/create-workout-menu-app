@@ -1,9 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  type: 
+valid_user_menu_chest:
+  user: user_with_two_split_menu
+  type: benchpress
 
-two:
-  user: two
-  type: 
+valid_user_menu_leg:
+  user: user_with_two_split_menu
+  type: squat
+
+valid_user_menu_back:
+  user: user_with_two_split_menu
+  type: deadlift
+
+valid_user_menu_biceps:
+  user: user_with_two_split_menu
+  type: dumbbellcurl
+
+valid_user_menu_triceps:
+  user: user_with_two_split_menu
+  type: frenchpress
+
+valid_user_menu_quadriceps:
+  user: user_with_two_split_menu
+  type: legextension
+

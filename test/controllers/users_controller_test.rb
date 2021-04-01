@@ -12,7 +12,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # ローテションの数値がそのままだと新たなの部位別トレーニングが途中からになる
+  # ローテーションの数値がそのままだと新たなの部位別トレーニングが途中からになる
   test "週あたりトレーニング回数更新に合わせてローテーションをリセットする" do
     skip
     assert_not @user.training_rotation == 0
