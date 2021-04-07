@@ -2,25 +2,25 @@
 
 valid_user_menu_chest:
   user: user_with_two_split_menu
-  type: benchpress
+  type_id: 1
 
 valid_user_menu_leg:
   user: user_with_two_split_menu
-  type: squat
+  type_id: 2
 
 valid_user_menu_back:
   user: user_with_two_split_menu
-  type: deadlift
+  type_id: 3
 
 valid_user_menu_biceps:
   user: user_with_two_split_menu
-  type: dumbbellcurl
+  type_id: 4
 
 valid_user_menu_triceps:
   user: user_with_two_split_menu
-  type: frenchpress
+  type_id: 5
 
 valid_user_menu_quadriceps:
   user: user_with_two_split_menu
-  type: legextension
+  type_id: 10
 

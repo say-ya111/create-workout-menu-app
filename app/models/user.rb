@@ -74,4 +74,13 @@ class User < ApplicationRecord
   def upper_menu
     self.muscle_parts.preload(:part)
   end
+
+  # トレーニングローテーションを回す。週あたりトレーニング回数を超えないように。
+  def rotate_rotation
+    if (next_training_rotation = self.training_rotation + 1) >= self.times_a_week
+      self.update_attributes(training_rotation: 0)
+    else
+      self.update_attributes(training_rotation: next_training_rotation)
+    end
+  end
 end

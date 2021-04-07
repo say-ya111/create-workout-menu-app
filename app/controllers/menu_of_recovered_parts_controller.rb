@@ -1,11 +1,11 @@
 class MenuOfRecoveredPartsController < ApplicationController
   def show
-    user = User.find(current_user.id)
+    user = current_user
     @menu_items = user.menu_of_recovered_parts
   end
 
   def create
-    user = User.find(current_user.id)
+    user = current_user
     user.recovered_parts.each do |p|
       p.update_attribute(:last_date, Date.today)
     end

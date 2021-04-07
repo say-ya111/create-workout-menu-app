@@ -12,5 +12,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :update]
   resources :types, only: [:new, :create]
-  resources :indiv_part_menu
+  resources :indiv_part_menu, only: [:new, :create]
 end
