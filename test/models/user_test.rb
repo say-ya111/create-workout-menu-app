@@ -22,4 +22,10 @@ class UserTest < ActiveSupport::TestCase
     assert @user_with_two_split_menu.split_menu.preload(:part).any?{|menu_item| !Part.upper_parts.include?(menu_item.part.name)}
   end
 
+  test "週４回トレーニングするユーザーを内部的に週３回トレーニングすると見なす" do
+    @user.update_attributes(times_a_week: 4)
+    assert_equal 3, @user.times_a_week
+    user = User.create(email: "test2021@mail.com", times_a_week: 4, password: "password", password_confirmation: "password")
+    assert_equal 3, user.times_a_week
+  end
 end

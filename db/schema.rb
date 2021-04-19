@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2021_04_01_091700) do
     t.datetime "updated_at", null: false
     t.integer "part_id"
     t.integer "user_id", default: 0
-    t.index ["id"], name: "index_types_on_id_and_user_id", unique: true
     t.index ["part_id"], name: "index_types_on_part_id"
   end
 

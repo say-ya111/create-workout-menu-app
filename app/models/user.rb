@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   validates :times_a_week, numericality: {only_integer: true, less_than_or_equal_to: 7, greater_than_or_equal_to: 2}
 
+  after_save :regard_four_times_as_three_times
+
 
   # そのユーザーの超回復済みメニュー
   def menu_of_recovered_parts
@@ -49,6 +51,8 @@ class User < ApplicationRecord
     case self.times_a_week
     when 2
       self.upper_lower_split_menu
+    when 3, 4
+      self.three_split_menu
     end
   end
 
@@ -62,7 +66,7 @@ class User < ApplicationRecord
     self.menu_items.eager_load(:part).where(parts: {name: Part.lower_parts})
   end
 
-  # 上半身と下半身に分けたメニュー
+  # 二分割メニューをローテーションに合わせて返す
   def upper_lower_split_menu
     if self.training_rotation == 0
       self.types_of_upper_parts
@@ -71,8 +75,25 @@ class User < ApplicationRecord
     end
   end
 
-  def upper_menu
-    self.muscle_parts.preload(:part)
+  # 三分割メニューをローテーションに合わせて返す
+  def three_split_menu
+    if self.training_rotation == 0
+      self.push_menu
+    elsif self.training_rotation == 1 
+      self.pull_menu
+    elsif self.training_rotation == 2
+      self.types_of_lower_parts
+    end
+  end
+
+  # 押す種目
+  def push_menu
+    self.menu_items.eager_load(:part).where(parts: {name: Part.push_parts})
+  end
+
+  # 引く種目
+  def pull_menu
+    self.menu_items.eager_load(:part).where(parts: {name: Part.pull_parts})
   end
 
   # トレーニングローテーションを回す。週あたりトレーニング回数を超えないように。
@@ -83,4 +104,11 @@ class User < ApplicationRecord
       self.update_attributes(training_rotation: next_training_rotation)
     end
   end
+
+  private
+
+    # 週4回も週3回も同じローテーションで分割メニューを組むので更新＆作成のタイミングで3回に書き換えておく。
+    def regard_four_times_as_three_times
+      self.update_attributes(times_a_week: 3) if self.times_a_week == 4
+    end
 end

@@ -29,37 +29,32 @@ frenchpress:
   name: フレンチプレス
   part: triceps
 
-abs:
-  id: 6
-  name: ケーブルクランチ
-  part: abs
-
 machinechestpress:
-  id: 7
+  id: 6
   name: マシンチェストプレス
   part: chest
 
 chinning:
-  id: 8
+  id: 7
   name: 懸垂
   part: back_muscles
 
-calfraise:
-  id: 9
-  name: カーフレイズ
-  part: calf
-
 legextension:
-  id: 10
+  id: 8
   name: レッグエクステンション
   part: quadriceps
 
 legcurl:
-  id: 11
+  id: 9
   name: レッグカール
   part: hamstring
 
 latpulldown:
-  id: 12
+  id: 10
   name: ラットプルダウン
   part: lat
+
+incline_dumbbellcurl:
+  id: 11
+  name: インクラインダンベルカール
+  part: biceps
