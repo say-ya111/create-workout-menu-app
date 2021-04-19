@@ -53,36 +53,45 @@ class User < ApplicationRecord
       self.upper_lower_split_menu
     when 3, 4
       self.three_split_menu
+    when 5
+      self.five_split_menu
     end
-  end
-
-  # 上半身部位の種目
-  def types_of_upper_parts
-    self.menu_items.eager_load(:part).where(parts: {name: Part.upper_parts})
-  end
-
-  # 下半身部位の種目
-  def types_of_lower_parts
-    self.menu_items.eager_load(:part).where(parts: {name: Part.lower_parts})
   end
 
   # 二分割メニューをローテーションに合わせて返す
   def upper_lower_split_menu
     if self.training_rotation == 0
-      self.types_of_upper_parts
+      self.upper_menu
     else
-      self.types_of_lower_parts
+      self.lower_menu
     end
   end
 
   # 三分割メニューをローテーションに合わせて返す
   def three_split_menu
-    if self.training_rotation == 0
+    case self.training_rotation
+    when 0
       self.push_menu
-    elsif self.training_rotation == 1 
+    when 1 
       self.pull_menu
-    elsif self.training_rotation == 2
-      self.types_of_lower_parts
+    when 2
+      self.lower_menu
+    end
+  end
+
+  # 五分割メニューをローテーションに合わせて返す
+  def five_split_menu
+    case self.training_rotation
+    when 0
+      self.back_menu
+    when 1
+      self.chest_menu
+    when 2
+      self.lower_menu
+    when 3
+      self.shoulder_menu
+    when 4
+      self.arm_menu
     end
   end
 
@@ -94,6 +103,36 @@ class User < ApplicationRecord
   # 引く種目
   def pull_menu
     self.menu_items.eager_load(:part).where(parts: {name: Part.pull_parts})
+  end
+
+  # 上半身部位の種目
+  def upper_menu
+    self.menu_items.eager_load(:part).where(parts: {name: Part.upper_parts})
+  end
+
+  # 下半身部位の種目
+  def lower_menu
+    self.menu_items.eager_load(:part).where(parts: {name: Part.lower_parts})
+  end
+
+  # 背中種目
+  def back_menu
+    self.menu_items.eager_load(:part).where(parts: {name: Part.back_parts})
+  end
+
+  # 胸種目
+  def chest_menu
+    self.menu_items.eager_load(:part).where(parts: {name: Part.chest_parts})
+  end
+
+  # 肩種目
+  def shoulder_menu
+    self.menu_items.eager_load(:part).where(parts: {name: Part.shoulder_parts})
+  end
+
+  # 腕種目
+  def arm_menu
+    self.menu_items.eager_load(:part).where(parts: {name: Part.arm_parts})
   end
 
   # トレーニングローテーションを回す。週あたりトレーニング回数を超えないように。

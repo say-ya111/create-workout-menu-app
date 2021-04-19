@@ -21,4 +21,21 @@ class Part < ApplicationRecord
   def self.pull_parts
     ["背筋", "広背筋", "上腕二頭筋"]
   end
+
+  def self.back_parts
+    ["背筋", "広背筋"]
+  end
+
+  # 一部位しかないけど、胸筋上部とかを追加した時の拡張性を考慮
+  def self.chest_parts
+    ["大胸筋"]
+  end
+
+  def self.shoulder_parts
+    ["肩"]
+  end
+
+  def self.arm_parts
+    ["上腕三頭筋", "上腕二頭筋"]
+  end
 end
