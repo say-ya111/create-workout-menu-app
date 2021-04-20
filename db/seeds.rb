@@ -16,7 +16,7 @@ names.zip(parts) do |name, part|
 end
 
 10.times do |n|
-  user = User.create!(email: "valid#{n}@mail.com", password: "foobar", password_confirmation: "foobar")
+  user = User.create!(email: "valid#{n}@mail.com", password: "foobar", training_rotation: 0, times_a_week: 2, password_confirmation: "foobar")
   
   # userのidで種目を分岐
   if user.id % 2 == 0

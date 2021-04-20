@@ -14,5 +14,58 @@
     </h1>
     <%= link_to 'ユーザー登録', new_user_registration_path, class: "btn btn-primary my-2" %>
 
-  <% end %>  
+  <% end %>
 </div>
+
+<div class="container" style="margin-top: 70px">
+  <h1>機能紹介</h1>
+  <p style="margin: 15px 0 35px 10px">主要な機能を紹介します。</p>
+
+  <h3>超回復済みメニュー自動生成機能</h3>
+  <p style="margin: 15px 0 35px 10px">
+    各部位の筋肉が超回復したのを考慮して自動的にメニューに盛り込みます。
+    ズボラなあなたにおすすめです。笑
+  </p>
+  <div class="menu-wrapper text-center">
+    <ul class="list-group menu-list mx-auto border-bottom">
+      <% @sample_types.each do |type| %>
+        <%= content_tag :div, type.name, class: "list-group-item text-center menu-list-item" %>
+      <% end %>
+    </ul>
+
+    <p>
+      <%= link_to 'トレーニングを完了したら押してください', "#", class: "btn btn-primary my-2", id: "js-complete-recover-button" %>
+    </p>
+    <span id="js-suggest-registration-area">
+      <%= link_to "ユーザー登録", new_user_registration_path %>して試してみましょう！
+    </span>
+  </div>
+
+  <h3 style="margin-top: 35px">部位別トレーニングメニュー</h3>
+  <p style="margin: 15px 0 35px 10px">
+    <%= link_to "https://valx.jp/column/120/#:~:text=%E7%9B%A3%E4%BF%AE%E8%80%85%20%E6%83%85%E5%A0%B1-,%E7%AD%8B%E3%83%88%E3%83%AC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E5%88%86%E5%89%B2%E6%B3%95%E3%81%A8%E3%81%AF%EF%BC%9F,%E5%88%86%E5%89%B2%E6%B3%95%E3%81%A8%E3%81%84%E3%81%84%E3%81%BE%E3%81%99%E3%80%82", target: :_blank do %>
+      分割法
+    <% end %>
+    を取り入れたい、やや上級者向けの機能です。週何回トレーニングするか教えていただければ、こちらも自動的に特定部位のトレーニングメニューを生成します。
+  </p>
+  <div class="menu-wrapper text-center">
+    <h1 class="page-header text-dark border-bottom">
+      分割メニュー(<span id="indiv-day">1</span>日目)
+    </h1>
+    <ul class="list-group menu-list mx-auto border-bottom">
+      <% @indiv_part_menu_samples.each_with_index do |type, idx| %>
+        <%= content_tag :div, type.name, class: "list-group-item text-center menu-list-item", id: "indiv-item#{idx}" %>
+      <% end %>
+    </ul>
+
+    <p>
+      <%= link_to 'トレーニングを完了したら押してください', "#", class: "btn btn-primary my-2", id: "js-complete-indiv-button" %>
+    </p>
+    <span id="js-suggest-registration-indiv-area" class="text-info">
+      安心してください、完全無料です。
+      <%= link_to "ユーザー登録", new_user_registration_path %>して試してみましょう！
+    </span>
+  </div>
+</div>
+
+<%= javascript_include_tag "home" %>
