@@ -1,9 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  type: 
+valid_user_menu_chest:
+  user: user_with_two_split_menu
+  type_id: 1
 
-two:
-  user: two
-  type: 
+valid_user_menu_leg:
+  user: user_with_two_split_menu
+  type_id: 2
+
+valid_user_menu_back:
+  user: user_with_two_split_menu
+  type_id: 3
+
+valid_user_menu_biceps:
+  user: user_with_two_split_menu
+  type_id: 4
+
+valid_user_menu_triceps:
+  user: user_with_two_split_menu
+  type_id: 5
+
+valid_user_menu_quadriceps:
+  user: user_with_two_split_menu
+  type_id: 10
+

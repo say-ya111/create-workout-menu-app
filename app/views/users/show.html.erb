@@ -1,25 +1,65 @@
-<%= content_for :page_header do %>あなたのトレーニングメニュー<% end %>
+<%= content_for :page_header1 do %>追加された種目<% end %>
+<%= content_for :page_header2 do %>週ごとのトレーニング回数<% end %>
 
 
-<% if @menu_items.count > 0  %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <h1 class="page-header text-dark border-bottom"><%= yield(:page_header1) %></h1>
+    <% if @menu_items.count > 0  %>
 
-  <div class="menu-wrapper text-center">
-    <ul class="list-group menu-list mx-auto border-bottom">
-      <% @menu_items.each do |item| %>
-        <%= content_tag :div, item.name, class: "list-group-item text-center menu-list-item" %>
+      <div class="menu-wrapper text-center">
+        <ul class="list-group menu-list mx-auto border-bottom">
+          <% @menu_items.each do |item| %>
+            <%= content_tag :div, item.name, class: "list-group-item text-center menu-list-item" %>
+          <% end %>
+        </ul>
+        <p>
+          <%= link_to '超回復済みメニューを見る', menu_of_recovered_parts_path, class: "btn btn-primary my-2" %>
+        </p>
+      </div>
+
+    <% else %>
+
+      <div class="mx-auto text-center" style="width: 500px">
+        <p class="text-info">まだメニューが作成できていません。種目を選んで作成しましょう！</p>
+        <%= link_to '種目リスト', types_list_path, class: "btn btn-primary my-2" %><br>
+      </div>
+
+    <% end %>
+    </div>
+    <div class="col">
+      <h1 class="page-header text-dark border-bottom"><%= yield(:page_header2) %></h1>
+      <%= form_with(model: @user, url: user_path(current_user.id), remote: true) do |f| %>
+        <%= f.label User.human_attribute_name(:times_a_week) %>
+        <%= f.number_field :times_a_week, in: 2..7, id: "js-select-times-a-week" %>
+        <% if @user.training_rotation > 0 %>
+          <span class="text-danger">※変更すると現在のローテーションはリセットされます</span>
+        <% end %>
+          <p class="border-top" style="margin-top: 20px; padding-top: 20px">
+            <%= f.submit "トレーニング回数を設定する", data: { disable_with: "更新中..." }, class: "btn btn-primary btn-outline" %>
+            <span id="js-update-success" class="text-info" style="margin-left:5px"></span>
+          </p>
       <% end %>
-    </ul>
-    <p>
-      <%= link_to '超回復済みメニューを見る', menu_of_recovered_parts_path, class: "btn btn-primary my-2" %>
-    </p>
+      <div id="js-guide-seven-split-menu">
+        <span class="text-danger">
+          ※筋肥大を目的とするなら、オフの日を設けるのが効果的です。減量期に限り、毎日トレーニングすることを選択肢に入れましょう。
+        </span>
+      </div>
+    </div>
   </div>
+</div>
 
-<% else %>
+<script>
+  $(function() {
+    $("#js-guide-seven-split-menu").hide()
+  })
 
-  <div class="mx-auto text-center" style="width: 500px">
-    <p class="text-info">まだメニューが作成できていません。種目を選んで作成しましょう！</p>
-    <%= link_to '種目リスト', types_list_path, class: "btn btn-primary my-2" %><br>
-  </div>
-
-<% end %>
-
+  $("#js-select-times-a-week").change(
+    function() {
+      if ($(this).val() == 7) {
+        $("#js-guide-seven-split-menu").show()
+      }
+    }
+  )
+</script>

@@ -17,6 +17,7 @@ class TypesControllerTest < ActionDispatch::IntegrationTest
         type: "テスト種目",
         part: "1"
       }
+    assert_equal @user.id, Type.last.user_id
     end
   end
 

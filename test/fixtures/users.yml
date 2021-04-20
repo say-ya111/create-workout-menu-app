@@ -1,18 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-valid_user: {
-  email: "valid123@mail.com",
+valid_user:
+  email: "valid123@mail.com"
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-}
+  times_a_week: 7
+  training_rotation: 3
 
-# column: value
-#
-another_valid_user:  {
-  email: "valid456@mail.com",
+another_valid_user:
+  email: "valid456@mail.com"
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-}
-# column: value
+  times_a_week: 2
+  training_rotation: 0
+
+user_with_two_split_menu:
+  email: "mail@mail.com"
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  times_a_week: 2
+  training_rotation: 0
+  focused_part_id: 1

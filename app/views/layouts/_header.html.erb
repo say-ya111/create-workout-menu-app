@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-  <a href="/" class="navbar-brand header-logo">メニュー自動生成</a>
+  <a href="/" class="navbar-brand header-logo">Here's Menu</a>
   <button class="navbar-toggler" type="button"
       data-toggle="collapse"
       data-target="#navmenu1"
@@ -16,6 +16,14 @@
       <li class="nav-item">
         <%= link_to '種目リスト', types_list_path, class: 'nav-item nav-link' %>
       </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'ユーザー設定', user_path(current_user.id), class: 'nav-item nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '部位別トレーニングメニュー', new_indiv_part_menu_path, class: 'nav-item nav-link' %>
+        </li>
+      <% end %>
       <li class="nav-item">
         <% if user_signed_in? %>
           <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-item nav-link', method: 'delete' %>

@@ -1,0 +1,28 @@
+<%= provide(:title, "分割メニュー(#{@day}日目)") %>
+<%= content_for :page_header, "分割メニュー(#{@day}日目)" %>
+
+
+<div class="menu-wrapper text-center">
+  <% if @split_menu.count > 0 %>
+    <p id="js-split-menu-success" class="text-info"></p>
+    <ul class="list-group menu-list mx-auto border-bottom">
+      <% @split_menu.each do |split_menu_type| %>
+        <%= content_tag :div, split_menu_type.name, class: "list-group-item text-center menu-list-item" %>
+      <% end %>
+    </ul>
+    <p>
+      <%= link_to indiv_part_menu_index_path, method: :POST, remote: true, class: "btn btn-primary my-2" do %>
+        トレーニングが完了したら押してください
+      <% end %>
+    </p>
+  <% else %>
+    <p class="text-info">まだメニューが作成できていません。種目を選んで作成しましょう！</p>
+    <%= link_to '種目リスト', types_list_path, class: "btn btn-primary my-2" %><br>
+  <% end %>
+</div>
+
+<script>
+$(function(){
+  $("#js-split-menu-success").html("<%= guide_of_next_split_menu(@user) %>")
+})
+</script>

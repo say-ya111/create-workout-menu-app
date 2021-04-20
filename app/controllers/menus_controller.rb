@@ -1,6 +1,7 @@
 class MenusController < ApplicationController
   def new
     @types = Type.all
+    @user_type_ids = current_user.menu_items.map(&:id)
   end
 
   def create

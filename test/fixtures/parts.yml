@@ -1,4 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
 chest:
   name: 大胸筋
 
@@ -8,15 +9,21 @@ biceps:
 triceps:
   name: 上腕三頭筋
 
-abs:
-  name: 腹筋
-
 leg:
   name: 脚
 
 back_muscles:
   name: 背筋
 
+quadriceps:
+  name: 大腿四頭筋
+
+hamstring:
+  name: ハムストリング
+
+lats:
+  name: 広背筋
+
 part_id_one:
   id: 1
-  name: IDone
+  name: 大胸筋

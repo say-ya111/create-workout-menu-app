@@ -1,0 +1,28 @@
+<div class="types-list-wrapper ">
+  <div class="container">
+    <% if type_options.empty? %>
+
+      <div class="mx-auto text-center" style="width: 500px">
+        <p class="text-info">まずはメニューに種目を追加しましょう！</p>
+        <%= link_to '種目リスト', types_list_path %>
+      </div>
+
+    <% else %>
+
+      <%= form_with url: create_menu_path do |f|  %>
+        <div class="row types-list border-bottom">
+          <% type_options.each do |type_option| %>
+            <div class="col-md-4">
+              <div class="type-item border">
+                <%= type_option.name %>
+                <%= f.check_box "types[#{type_option.id}]", {}, type.id, "" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <%= f.submit "メニュー作成", data: { disable_with: "作成中..." }, class: "btn btn-primary" %>
+
+      <% end %>
+    <% end %>
+  </div>
+</div>

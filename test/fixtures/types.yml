@@ -5,48 +5,56 @@
 # below each fixture, per the syntax in the comments below
 #
 benchpress: 
-  id: 1,
-  name: ベンチプレス,
+  id: 1
+  name: ベンチプレス
   part: chest
-
 
 squat: 
-  id: 2,
-  name: スクワット,
+  id: 2
+  name: スクワット
   part: leg
 
-
 deadlift: 
-  id: 3,
-  name: デッドリフト,
+  id: 3
+  name: デッドリフト
   part: back_muscles
-
 
 dumbbellcurl:
-  id: 4,
-  name: ダンベルカール,
+  id: 4
+  name: ダンベルカール
   part: biceps
 
-
 frenchpress:
-  id: 5,
-  name: フレンチプレス,
+  id: 5
+  name: フレンチプレス
   part: triceps
 
-
-abs:
-  id: 6,
-  name: 腹筋,
-  part: abs
-
-
 machinechestpress:
-  id: 7,
-  name: マシンチェストプレス,
+  id: 6
+  name: マシンチェストプレス
   part: chest
 
-
 chinning:
-  id: 8,
-  name: 懸垂,
+  id: 7
+  name: 懸垂
   part: back_muscles
+
+legextension:
+  id: 8
+  name: レッグエクステンション
+  part: quadriceps
+
+legcurl:
+  id: 9
+  name: レッグカール
+  part: hamstring
+
+latpulldown:
+  id: 10
+  name: ラットプルダウン
+  part: lats
+
+incline_dumbbellcurl:
+  id: 11
+  name: インクラインダンベルカール
+  part: biceps

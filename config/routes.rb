@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/types_list' => "types#index"
 
   resources :menus, only: [:new, :create]
-  resources :users, only: [:show]
   resources :types, only: [:index, :new, :create]
+  resources :users, only: [:show, :update]
+  resources :indiv_part_menu, only: [:new, :create]
 end

@@ -9,7 +9,7 @@
           <div class="col-md-4">
             <div class="type-item border">
               <%= type.name %>
-              <%= f.check_box "types[#{type.id}]", {}, type.id, "" %>
+              <%= f.check_box "types[#{type.id}]", { checked: @user_type_ids.include?(type.id) }, type.id, "" %>
             </div>
           </div>
         <% end %>
