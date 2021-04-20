@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_091700) do
+ActiveRecord::Schema.define(version: 2021_04_20_144356) do
 
   create_table "menus", force: :cascade do |t|
     t.integer "user_id"
@@ -63,7 +63,9 @@ ActiveRecord::Schema.define(version: 2021_04_01_091700) do
     t.datetime "updated_at", null: false
     t.integer "times_a_week", default: 2
     t.integer "training_rotation", default: 0
+    t.integer "focused_part_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["focused_part_id"], name: "index_users_on_focused_part_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

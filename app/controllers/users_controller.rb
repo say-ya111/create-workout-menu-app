@@ -13,7 +13,8 @@ class UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(
-      :times_a_week
+      :times_a_week,
+      :focused_part_id
     )
   end
 

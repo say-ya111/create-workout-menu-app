@@ -13,13 +13,28 @@ class IndivPartMenuRotationTest < ActionDispatch::IntegrationTest
   end
 
   test "三分割メニューのローテンションを適切に行える" do
+    # 週に3,4,6回トレーニングするユーザは三分割メニュー。
     @user.update_attributes(times_a_week: 3)
+    get new_indiv_part_menu_path
+    assert_rotation(@user.times_a_week)
+
+    @user.update_attributes(times_a_week: 4)
+    get new_indiv_part_menu_path
+    assert_rotation(@user.times_a_week)
+
+    @user.update_attributes(times_a_week: 6)
     get new_indiv_part_menu_path
     assert_rotation(@user.times_a_week)
   end
 
   test "五分割メニューのローテンションを適切に行える" do
     @user.update_attributes(times_a_week: 5)
+    get new_indiv_part_menu_path
+    assert_rotation(@user.times_a_week)
+  end
+
+  test "七分割メニューのローテンションを適切に行える" do
+    @user.update_attributes(times_a_week: 7)
     get new_indiv_part_menu_path
     assert_rotation(@user.times_a_week)
   end

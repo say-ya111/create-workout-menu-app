@@ -17,3 +17,4 @@ user_with_two_split_menu:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   times_a_week: 2
   training_rotation: 0
+  focused_part_id: 1

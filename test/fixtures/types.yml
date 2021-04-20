@@ -52,7 +52,7 @@ legcurl:
 latpulldown:
   id: 10
   name: ラットプルダウン
-  part: lat
+  part: lats
 
 incline_dumbbellcurl:
   id: 11
